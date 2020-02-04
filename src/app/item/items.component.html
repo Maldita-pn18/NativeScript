@@ -1,0 +1,20 @@
+<ActionBar title="My Native NativeScript Application">
+    <Gridlayout columns="*, *, *">
+        <Button col="0" text="Go to grid" style="background-color:pink" class="btn" [nsRouterLink]="['/grid']"></Button>
+        <Button col="1" text="Soccer" style="background-color:gray" class="btn" [nsRouterLink]="['/soccerplayer']"></Button>
+        <Button col="2" text="Artist" style="background-color:skyblue" class="btn" [nsRouterLink]="['/artist']"></Button>
+    </Gridlayout>
+</ActionBar>
+
+<GridLayout columns="*,*" col="0">
+    <ListView [items]="items">
+        <ng-template let-item="item">
+            <StackLayout>
+                <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+    <GridLayout col="1">
+        <ns-form (editEvent)="add($event)" ></ns-form>
+    </GridLayout>
+</GridLayout>
