@@ -11,16 +11,12 @@ import { ItemService } from "./item.service";
 export class ItemDetailComponent implements OnInit {
 
     item: Item;
-    name: string
-    id: number
-    role = "GoalKeeper"
     number = 0
     show : boolean
-    info : Item[] = []
     constructor(
         private itemService: ItemService,
         private route: ActivatedRoute
-    ) {}y6
+    ) {}
 
     ngOnInit(): void {
         const id = +this.route.snapshot.params.id;
@@ -36,8 +32,8 @@ export class ItemDetailComponent implements OnInit {
 
     update(data){
         this.show = true
-        this.id = data.id
-        this.name = data.name
-        this.role = data.role
+        this.item.name = data.name
+        this.item.role = data.role
+        this.item.type = data.type
     }
 }

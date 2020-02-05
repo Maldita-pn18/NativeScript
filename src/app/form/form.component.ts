@@ -11,13 +11,20 @@ import { TextView } from "tns-core-modules/ui/text-view";
 })
 export class FormComponent implements OnInit {
     @Input() store: Item;
+    // store : Item;
+    name = ""
+    role = ""
     @Output() editEvent = new EventEmitter();
-    name : string
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     submit() {
-        this.editEvent.emit(this.store);
+        let obj = {
+            name: this.name,
+            role: this.role,
+        }
+        this.editEvent.emit(obj);
     }
 }

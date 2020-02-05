@@ -61,12 +61,16 @@ export class ItemService {
     //     return this.artists
     // }
 
-    getArtist(type: string): Item {
-        return
-    }
+    // getArtist(type: string): Item {
+    //     return 
+    // }
 
     getItem(id: number): Item {
         return this.items.filter(item => item.id === id)[0];
+    }
+    getArtistSoccer (type){
+        return this.items.filter((item) => item.type == type)
+
     }
 
 

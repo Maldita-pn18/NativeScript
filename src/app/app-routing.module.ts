@@ -7,6 +7,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { GridComponent } from "~/app/grid/grid.component";
 import { SoccerplayerComponent } from "./soccerplayer/soccerplayer.component";
 import { ArtistComponent } from "./artist/artist.component";
+import { DashboardComponent } from "~/app/dashboard/dashboard.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/items", pathMatch: "full" },
@@ -14,7 +15,8 @@ const routes: Routes = [
     { path: "item/:id", component: ItemDetailComponent },
     { path: "grid", component: GridComponent},
     { path: "soccerplayer", component: SoccerplayerComponent},
-    { path: "artist", component: ArtistComponent}
+    { path: "artist", component: ArtistComponent},
+    {path : "dashboard", component : DashboardComponent}
 ];
 
 @NgModule({

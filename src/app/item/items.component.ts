@@ -1,6 +1,6 @@
-import { Component, OnInit , Input, Output, EventEmitter} from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
-import { Item } from "./item";
+import { Item, Type } from "./item";
 import { ItemService } from "./item.service";
 
 @Component({
@@ -8,22 +8,33 @@ import { ItemService } from "./item.service";
     templateUrl: "./items.component.html"
 })
 export class ItemsComponent implements OnInit {
+    @Input() artistSoccer: Type;
     items: Array<Item>;
-    item : Item
+    item: Item;
+    choice: boolean
 
     constructor(private itemService: ItemService) { }
 
     ngOnInit(): void {
-        this.item = {
-            id: 0,
-            name: "",
-            role: "",
-            type: ""
+        console.log(this.artistSoccer)
+        if (this.artistSoccer != undefined) {
+            this.choice = false;
+            this.items = this.itemService.getArtistSoccer(this.artistSoccer)
+        } else {
+            this.choice = true;
+            this.items = this.itemService.getItems()
         }
-        this.items = this.itemService.getItems();
+
+        // this.item = {
+        //     id: 0,
+        //     name: "",
+        //     role: "",
+        //     type: ""
+        // }
+        // this.items = this.itemService.getItems();
     }
 
-    add(data){
+    add(data) {
         var obj = {
             id: this.items.length + 1,
             name: data.name,
@@ -31,6 +42,7 @@ export class ItemsComponent implements OnInit {
             type: data.type
         }
         this.items.push(obj)
+        
     }
 
 }

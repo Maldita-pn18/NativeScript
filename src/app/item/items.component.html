@@ -1,12 +1,12 @@
 <ActionBar title="My Native NativeScript Application">
-    <Gridlayout columns="*, *, *">
-        <Button col="0" text="Go to grid" style="background-color:pink" class="btn" [nsRouterLink]="['/grid']"></Button>
-        <Button col="1" text="Soccer" style="background-color:gray" class="btn" [nsRouterLink]="['/soccerplayer']"></Button>
-        <Button col="2" text="Artist" style="background-color:skyblue" class="btn" [nsRouterLink]="['/artist']"></Button>
+    <Gridlayout columns="*,*,*">
+        <Button color="white"  col="0" text="Dashboard" style="background-color:burlywood" class="btn" [nsRouterLink]="['/dashboard']"></Button>
+        <Button color="white"  col="1" text="Soccer" style="background-color: orchid" class="btn" [nsRouterLink]="['/soccerplayer']"></Button>
+        <Button color="white"  col="2" text="Artist" style="background-color:skyblue" class="btn" [nsRouterLink]="['/artist']"></Button>
     </Gridlayout>
 </ActionBar>
 
-<GridLayout columns="*,*" col="0">
+<!-- <GridLayout columns="*,*" col="0" backgroundColor="lightgray">
     <ListView [items]="items">
         <ng-template let-item="item">
             <StackLayout>
@@ -17,4 +17,17 @@
     <GridLayout col="1">
         <ns-form (editEvent)="add($event)" ></ns-form>
     </GridLayout>
-</GridLayout>
+</GridLayout> -->
+<FlexboxLayout flexDirection="column" width="500" height="700" backgroundColor="lightgray">
+        <ListView [items]="items">
+                <ng-template let-item="item">
+                    <StackLayout>
+                        <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+            <br>
+            <GridLayout col="1">
+                    <ns-form (editEvent)="add($event)" [store]="item"></ns-form>
+                </GridLayout>
+      </FlexboxLayout>
